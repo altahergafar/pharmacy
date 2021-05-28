@@ -7,12 +7,14 @@
       <field name="model">university.submission</field>
       <field name="arch" type="xml">
         <tree>
+            
           <field name="parent_name"/>
           <field name="student_name"/>
           <field name="description"/>
           <field name ="request_Date"/>
           <field name ="level"/>
           <field name ="accepted"/>
+
         </tree>
       </field>
     </record>
@@ -22,14 +24,18 @@
       <field name="model">university.submission</field>
       <field name="arch" type="xml">
         <form>
-
-              <field name="parent_name" string="parent"/>
-            <field name="student_name" string="student"/>
-          <field name="description" string="description"/>
-          <field name ="request_Date" string ="request date"/>
-          <field name ="level" string="level"/>
-          <field name ="accepted" string="accepted"/>
-
+        <sheet>
+            <group>
+              <field name="parent_name" > parent </field>
+            <field name="student_name" > student"</field>
+          <field name="description">description</field>
+            </group>
+            <group>
+          <field name ="request_Date" > request date</field>
+          <field name ="level" > level </field>
+          <field name ="accepted"> accepted </field>
+            </group>
+        </sheet>
         </form>
       </field>
     </record>
