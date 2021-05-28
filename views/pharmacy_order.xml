@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="pharmacy_form" model="ir.ui.view">
+            <field name="name">pharmacy</field>
+            <field name="model">pharmacy.order</field>
+            <field name="arch" type="xml">
+                <form string="pharmacy">
+                    <sheet>
+                        <group>
+                            <field name="customer_treatments"/>
+                            <field name="date"/>
+                            <field name="prescription"/>
+                        </group>
+                        <group>
+                            <field name="suggested_pharmacy"/>
+                            <field name="salesman"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="pharmacy_tree" model="ir.ui.view">
+            <field name="name">Pharmacy</field>
+            <field name="model">pharmacy.order</field>
+            <field name="arch" type="xml">
+                <tree string="pharmacy">
+                    <field name="customer_treatments"/>
+                    <field name="date"/>
+                    <field name="prescription"/>
+                    <field name="suggested_pharmacy"/>
+                    <field name="salesman"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pharmacy_search" model="ir.ui.view">
+            <field name="name">Pharmacy</field>
+            <field name="model">pharmacy.order</field>
+            <field name="arch" type="xml">
+                <search string="pharmacy">
+                    <field name="date"/>
+                    <field name="salesman"/>
+                    <filter string="Order date" name="date" domain="[('date','=',True)]"/>
+                    <filter string="Salesman" name="salesman" domain="[('salesman','=',True)]"/>
+                    <separator/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_pharmacy" model="ir.actions.act_window">
+            <field name="name">Pharmacy</field>
+            <field name="res_model">pharmacy.order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="pharmacy_root"
+                  name="pharmacy"
+                  sequence="5"/>
+        <menuitem id="pharmacy_order_main_menu"
+                  name="pharmacy"
+                  parent="pharmacy_root"
+                  sequence="3"
+                  action="action_pharmacy"/>
+    </data>
+</odoo>
+
