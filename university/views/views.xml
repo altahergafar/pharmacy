@@ -1,0 +1,99 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="university.list">
+      <field name="name">university list</field>
+      <field name="model">university.submission</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="parent_name"/>
+          <field name="student_name"/>
+          <field name="description"/>
+          <field name ="request_Date"/>
+          <field name ="level"/>
+          <field name ="accepted"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="university.form">
+      <field name="name">university list</field>
+      <field name="model">university.submission</field>
+      <field name="arch" type="xml">
+        <form>
+
+              <field name="parent_name" string="parent"/>
+            <field name="student_name" string="student"/>
+          <field name="description" string="description"/>
+          <field name ="request_Date" string ="request date"/>
+          <field name ="level" string="level"/>
+          <field name ="accepted" string="accepted"/>
+
+        </form>
+      </field>
+    </record>
+<record model="ir.ui.view" id="university.search">
+      <field name="name">university list</field>
+      <field name="model">university.submission</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="student_name"/>
+        <field name="parent_name"/>
+        <field name ="request_Date"/>
+        <filter string="not accepted" name="accepted" domain="[('accepted','=',False)]"/>
+        <filter string="accepted" name="accepted" domain="[('accepted','=',True)]"/>
+      </search>
+    </field>
+</record>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="university.action_window">
+      <field name="name">student submission</field>
+      <field name="res_model">university.submission</field>
+      <field name="view_mode">tree,form</field>
+
+    </record>
+
+    <menuitem name="university" id="university.menu_root"/>
+<menuitem id="University_submission_menu"
+name="submission"
+action="university.action_window"
+parent ="university.menu_root"
+ />
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="university.action_server">
+      <field name="name">university server</field>
+      <field name="model_id" ref="model_university_university"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="university.menu_1" parent="university.menu_root"/>
+    <menuitem name="Menu 2" id="university.menu_2" parent="university.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="university.menu_1_list" parent="university.menu_1"
+              action="university.action_window"/>
+    <menuitem name="Server to list" id="university" parent="university.menu_2"
+              action="university.action_server"/>
+-->
+  </data>
+</odoo>
