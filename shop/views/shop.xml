@@ -1,0 +1,43 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="shop_list">
+            <field name="name">shop list</field>
+            <field name="model">material.request</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="requester"/>
+                    <field name="material_name"/>
+                    <field name="reason"/>
+                    <field name="request_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="shop_action_window">
+            <field name="name">Shop Request</field>
+            <field name="res_model">material.request</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Search View -->
+        <record id="shop_view_search" model="ir.ui.view">
+            <field name="name">shop Search</field>
+            <field name="model">material.request</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="requester"/>
+                    <field name="material_name"/>
+                    <field name="request_date"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Adding menu Item -->
+        <menuitem name="shop" id="shop_menu_root"/>
+        <menuitem name="Shop Request" id="shop_menu_2" parent="shop_menu_root"
+                  action="shop_action_window"/>
+
+    </data>
+</odoo>
