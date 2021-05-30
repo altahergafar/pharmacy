@@ -1,0 +1,110 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="training_center.list">
+      <field name="name">training_center list</field>
+      <field name="model">training.center</field>
+      <field name="arch" type="xml">
+        <tree string="Courses">
+          <field name="name"/>
+          <field name="teacher"/>
+          <field name="start_date"/>
+          <field name="end_date"/> 
+          <field name="price"/>
+        </tree>
+      </field>
+    </record>
+
+
+<record model="ir.ui.view" id="training_center.form">
+      <field name="name">training_center form</field>
+      <field name="model">training.center</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            
+                <group >
+          <field name="name"/>
+           <field name="start_date"/>
+          <field name="end_date"/>
+          <field name="teacher"/>
+          
+          </group>
+          <notebook>
+            <page >
+     <searator string="More Information"/>
+     <group>
+           <field name="candidates"/>
+          <field name="hall"/>
+          <field name="price"/>
+          <field name="certificate"/>
+          <field name="announcement"/>
+        </group>
+          </page>
+            </notebook>
+        </sheet>
+        </form>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="training_center.search">
+      <field name="name">training_center search</field>
+      <field name="model">training.center</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="hall"/>
+          <field name="price"/>
+      <filter string="Courses" name="name" domain="[('name','=', 'odoo')]"/>
+          <filter string="Start Date" name="start_date" />
+          <filter string="End Date" name="end_date" />
+          <filter string="Teacher" name="teacher" domain="[('teacher','=', 'esraa')]" />
+        </search>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="training_center.action_window">
+      <field name="name">Courses</field>
+      <field name="res_model">training.center</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+ <!-- Top menu item -->
+
+    <menuitem name="Training Center" id="training_center.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Training Center" id="training_center.menu_1" parent="training_center.menu_root"/>
+    <menuitem name="Courses" id="training_center.menu_2" parent="training_center.menu_1"/>
+
+    <!-- actions -->
+
+    <menuitem name="Courses" id="training_center.menu_1_list" parent="training_center.menu_2"
+              action="training_center.action_window"/>
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="training_center.action_server">
+      <field name="name">training_center server</field>
+      <field name="model_id" ref="model_training_center_training_center"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+   
+         <!--      
+    <menuitem name="Server to list" id="training_center" parent="training_center.menu_2"
+              action="training_center.action_server"/>
+-->
+  </data>
+</odoo>
