@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+       <!-- explicit form view definition -->
+       <record id="material_request_view_form" model="ir.ui.view">
+            <field name="name">Material Request</field>
+            <field name="model">material.request</field>
+            <field name="arch" type="xml">
+                <form string="Material Request">
+                    <sheet>
+                        <group>
+                             <field name="requester"/>
+                             <field name="material_name"/>
+                             <field name="suggested_supplier"/>
+                             <field name="Necessity_level"/>
+                             <field name="request_date"/>
+                             <field name="reason"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="material_request_list">
+      <field name="name">material_request list</field>
+      <field name="model">material.request</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="requester"/>
+          <field name="material_name"/>
+          <field name="Necessity_level"/>
+          <field name="request_date"/>
+          <field name="suggested_supplier"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- search view  -->
+
+    <record id="material_request_view_search" model="ir.ui.view">
+            <field name="name">material.request.view.search</field>
+            <field name="model">material.request</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="requester" filter_domain="['|', ('requester','ilike',self), ('material_name','ilike',self)]" string="requester or material name"/>
+                    <separator/>
+                    <filter string="Today requests" name="today" domain="[('request_date','&gt;=',time.strftime('%%Y-%%m-%%d'))]"/>
+                </search>
+            </field>
+        </record>
+   <!-- action -->
+    <record model="ir.actions.act_window" id="house_action_window">
+      <field name="name">material request window</field>
+      <field name="res_model">material.request</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="House" id="house_menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="material request" id="house_menu_1" parent="house_menu_root"  action="house_action_window"/>
+
+  </data>
+</odoo>
