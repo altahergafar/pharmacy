@@ -1,0 +1,101 @@
+<odoo>
+  <data>
+<!--    &lt;!&ndash; explicit list view definition &ndash;&gt;-->
+
+    <record model="ir.ui.view" id="hospital.list">
+      <field name="name">hospital list</field>
+      <field name="model">hospital.hospital</field>
+      <field name="arch" type="xml">
+
+        <tree string="Hospital">
+          <field name="first_name"/>
+          <field name="middle_name"/>
+          <field name='last_name'/>
+          <field name="patient_age"/>
+          <field name="doctor_id"/>
+          <field name="description"/>
+          <field name="priority"/>
+          <field name="date"/>
+
+        </tree>
+      </field>
+    </record>
+
+ <record model="ir.ui.view" id="hospital.form">
+      <field name="name">hospital list</field>
+      <field name="model">hospital.hospital</field>
+      <field name="arch" type="xml">
+              <form>
+                <group>
+                  <field name="first_name"/>
+                  <field name="middle_name"/>
+                  <field name="last_name"/>
+
+                </group>
+                <group>
+                     <field name="doctor_id"/>
+                     <field name="description"/>
+                     <field name="priority"/>
+                </group>
+              </form>
+      </field>
+</record>
+
+    <record model="ir.ui.view" id="hospital.search">
+      <field name="name">hospital list</field>
+      <field name="model">hospital.hospital</field>
+      <field name="arch" type="xml">
+              <search>
+                <field name="first_name"  string='Pateint Name' filter_domain="['|','|',('first_name','ilike',self),('middle_name', 'ilike' ,self),('last_name','ilike',self)"/>
+
+                <field name="doctor_id" string='Docter Code'/>
+                <field name="date" string='Date'/>
+<!--                <filter name="doctor_id" string='Docter Code' domain="[('doctor_id','=',False)]"/>-->
+                <filter name="priority" string='priority' domain="[('priority','=','high')]"/>
+              </search>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="hospital.action_window">
+      <field name="name">hospital window</field>
+      <field name="res_model">hospital.hospital</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+<!--    &lt;!&ndash; server action to the one above &ndash;&gt;-->
+<!--&lt;!&ndash;-->
+<!--    <record model="ir.actions.server" id="hospital.action_server">-->
+<!--      <field name="name">hospital server</field>-->
+<!--      <field name="model_id" ref="model_hospital_hospital"/>-->
+<!--      <field name="state">code</field>-->
+<!--      <field name="code">-->
+<!--        action = {-->
+<!--          "type": "ir.actions.act_window",-->
+<!--          "view_mode": "tree,form",-->
+<!--          "res_model": model._name,-->
+<!--        }-->
+<!--      </field>-->
+<!--    </record>-->
+<!--&ndash;&gt;-->
+
+<!--    &lt;!&ndash; Top menu item &ndash;&gt;-->
+
+    <menuitem name="hospital" id="hospital.menu_root"/>
+
+<!--    &lt;!&ndash; menu categories &ndash;&gt;-->
+
+    <menuitem name="Menu 1" id="hospital.menu_1" parent="hospital.menu_root" action ="hospital.action_window" />
+
+
+<!--    &lt;!&ndash; actions &ndash;&gt;-->
+<!--&lt;!&ndash;-->
+<!--    <menuitem name="List" id="hospital.menu_1_list" parent="hospital.menu_1"-->
+<!--              action="hospital.action_window"/>-->
+<!--    <menuitem name="Server to list" id="hospital" parent="hospital.menu_2"-->
+<!--              action="hospital.action_server"/>-->
+<!--&ndash;&gt;-->
+  </data>
+</odoo>
