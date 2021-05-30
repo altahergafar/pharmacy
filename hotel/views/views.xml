@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="hotel_form">
+      <field name="name">hotel form</field>
+      <field name="model">hall.reservation.request</field>
+      <field name="arch" type="xml"/>
+        <form>
+            <sheet>
+                 <group>
+                  <field name="name"/>
+                  <field name="hall code"/>
+                  <field name="date"/>
+                  <field name="description"/>
+                  <field name="hours"/>
+                  <field name="available time"/>
+                  </group>
+            </sheet>
+        </form>
+      </record>
+      <record model="ir.ui.view" id="hotel_tree">
+          <field name="name">hotel tree</field>
+          <field name="model">hall.reservation.request</field>
+          <field name="arch" type="xml"/>
+        <tree>
+	    <group>
+            <sheet>
+                <field name="name"/>
+		        <field name="description"/>
+            </sheet>
+
+        </group>
+        </tree>
+         </record>
+
+
+  <record model="ir.ui.view" id="hotel_search">
+      <field name="name">hotel search</field>
+      <field name="model">hall.reservation.request</field>
+      <field name="arch" type="xml"/>
+      <search>
+            <field name="date"/>
+		    <field name="available time"/>
+          <group>
+            <filter String="Hall Code " name="Hall Code " domain="[('internal_group','=''liability')]"/>
+            <filter String="request date" name="request date" domain="[('internal_group','=''liability')]"/>
+          </group>
+      </search>
+
+  </record>
+
+
+
+    <record id="hotel_action_window" model="ir.actions.act_window" >
+      <field name="name">hotel window</field>
+      <field name="res_model">hall.reservation.request</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Hotel" sequence="1" id="hotel_menu_root"/>
+
+
+    <menuitem name="Hotel" sequence="1" id="hotel_menu_1_list" parent="hotel_menu_root"
+              action="hotel_action_window"/>
+
+
+
+ </data>
+</odoo>
