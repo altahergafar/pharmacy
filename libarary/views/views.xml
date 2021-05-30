@@ -22,7 +22,45 @@
             </field>
         </record>
 
-        
+        <record id="library_view" model="ir.ui.view">
+            <field name="name">Books</field>
+            <field name="model">libarary.books</field>
+            <field name="arch" type="xml">
+                <form string="Re-Sequence">
+                  <branch>
+                    <group>
+                        <group>
+                            <field name="requester"/>
+                            <field name="book"/>
+                            <field name="rantbook_date"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                            <field name="quantity"/>
+                        </group>
+                    </group>
+                  </branch>
+                </form>
+            </field>
+        </record>
+
+
+      <record model="ir.ui.view" id="libarary_list">
+           <field name="name">Books</field>
+            <field name="model">libarary.books</field>
+            <field name="arch" type="xml">
+                <tree>
+                   <field name="requester"/>
+                            <field name="book"/>
+                            <field name="rantbook_date"/>
+                             <field name="description"/>
+                            <field name="quantity"/>
+                    
+                   
+                </tree>
+            </field>
+        </record>
+   
       <menuitem id="root_menu" name="libarary"/>
       <menuitem id="books_menu" name="Books" parent="root_menu" action="book_action"/>
 
