@@ -74,7 +74,7 @@
 <menuitem
               id="menu_Requester_root"
               name="GYM"
-web_icon="gym,static/src/data/logo.jpg"
+web_icon="gym,static/description/icon.png"
 
 />
 
