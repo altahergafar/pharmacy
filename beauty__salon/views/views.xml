@@ -1,0 +1,122 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+        <record id="view_beauty__salon_form" model="ir.ui.view">
+             <field name="name">Beauty_Salon.list.form</field>
+             <field name="model">beauty__salon.beauty__salon</field>
+             <field name="arch" type="xml">
+                 <form string="beauty salon">
+                     <sheet>
+                         <group>
+                            <field name="name"/>
+                            <field name="Service"/>
+                            <field name="ExpertName"/>
+                            <field name="Request_date"/>
+                            <field name="Cost"/>
+                         </group>
+                     </sheet>
+                 </form>
+             </field>
+         </record>
+
+         <record id="view_employee_category_list" model="ir.ui.view">
+             <field name="name">Beauty_Salon.list.view</field>
+             <field name="model">beauty__salon.beauty__salon</field>
+             <field eval="8" name="priority"/>
+             <field name="arch" type="xml">
+                  <tree>
+                      <field name="name"/>
+                      <field name="Service"/>
+                      <field name="ExpertName"/>
+                      <field name="Request_date"/>
+                      <field name="Cost"/>
+                    </tree>
+             </field>
+         </record>
+
+         <record id="beauty__salon_action_window" model="ir.actions.act_window">
+             <field name="name">Beauty Salon</field>
+             <field name="res_model">beauty__salon.beauty__salon</field>
+             <field name="view_mode">tree,form</field>
+         </record>
+
+    <!--Search view-->
+  <!-- <record id="hr_employee_public_view_search" model="ir.ui.view">
+            <field name="name">hbeauty__salon.beauty__salon.search</field>
+            <field name="model">beauty__salon.beauty__salon.public</field>
+            <field name="arch" type="xml">
+                <search string="Employees">
+                    <field name="name" string="Employees" filter_domain="['|',('work_email','ilike',self),('name','ilike',self)]"/>
+                    <field name="job_title" string="Job Title"/>
+                    <field name="department_id" string="Department"/>
+                    <field name="company_id" string="Company"/>
+                    <separator/>
+                    <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_manager" string="Manager" domain="[]" context="{'group_by':'parent_id'}"/>
+                        <filter name="group_department" string="Department" domain="[]" context="{'group_by':'department_id'}"/>
+                        <filter name="group_company" string="Company" domain="[]" context="{'group_by':'company_id'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="company_id" groups="base.group_multi_company" icon="fa-building" enable_counters="1"/>
+                        <field name="department_id" icon="fa-users" enable_counters="1"/>
+                    </searchpanel>
+                </search>
+             </field>
+        </record> -->
+
+       <record id="beauty__salon_search" model="ir.ui.view">
+             <field name="name"> Search</field>
+             <field name="model">beauty__salon.beauty__salon</field>
+             <field name="arch" type="xml">
+                  <search>
+                     <field name="name"/>
+                      <field name="ExpertName"/>
+                      <field name="Request_date"/>
+                      <field name="Cost"/>
+                      <filter string="name" name="name"
+                      domain="[('name','=','fadwa')]"/>
+                 </search>
+             </field>
+       </record> 
+
+
+
+    <menuitem name="Beauty Salon" id="beauty__salon_menu_root" action="beauty__salon_action_window"/>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="beauty__salon.action_server">
+      <field name="name">Beauty_Salon server</field>
+      <field name="model_id" ref="model_beauty__salon_beauty__salon"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="beauty__salon.menu_1" parent="beauty__salon.menu_root"/>
+    <menuitem name="Menu 2" id="beauty__salon.menu_2" parent="beauty__salon.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="beauty__salon.menu_1_list" parent="beauty__salon.menu_1"
+              action="beauty__salon.action_window"/>
+    <menuitem name="Server to list" id="beauty__salon" parent="beauty__salon.menu_2"
+              action="beauty__salon.action_server"/>
+-->
+  </data>
+</odoo>

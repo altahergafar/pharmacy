@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_beauty__salon_beauty__salon,beauty__salon.beauty__salon,model_beauty__salon_beauty__salon,base.group_user,1,1,1,1
