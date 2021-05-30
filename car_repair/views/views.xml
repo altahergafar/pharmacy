@@ -1,0 +1,111 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="car_repair.list">
+      <field name="name">car_repair list</field>
+      <field name="model">car.repair</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="car"/>
+          <field name="person"/>
+          <field name="problem"/>
+          <field name="current_date"/>
+          <field name="need"/>
+
+        </tree>
+      </field>
+    </record>
+<!--form  display-->
+     <record model="ir.ui.view" id="car_repair.form">
+      <field name="name">car_repair list</field>
+      <field name="model">car.repair</field>
+      <field name="arch" type="xml">
+        <form>
+<sheet>
+       <group>
+
+              <field name="name"/>
+            <field name="car"/>
+            <field name="person"/>
+           <field name="problem"/>
+          <field name="current_date"/>
+          <field name="need"/>
+               </group>
+</sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+    Search view
+     <record id="car_repair_search" model="ir.ui.view">
+        <field name="name">Car Repair Search</field>
+        <field name="model">car.repair</field>
+        <field name="arch" type="xml">
+         <search>
+             <field name="name"/>
+             <field name="car"/>
+             <field name="person"/>
+             <field name="current_date"/>
+            <filter string="Car name" name="car_name"
+
+                     domain="[('car','=','corella')]"/>
+                         <filter string="Responsible" name="person"
+
+                     domain="[('person','=','ahmad')]"/>
+                         <filter string="Requester" name="name"
+
+                     domain="[('name','=','hassan')]"/>
+                         <filter string="Date" name="current_date"/>
+       </search>
+             </field>
+
+      </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="repair_action">
+      <field name="name">car_repair </field>
+      <field name="res_model">car.repair</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+   <record model="ir.actions.server" id="car_repair.action_server">
+      <field name="name">car_repair server</field>
+      <field name="model_id" ref="model_car_repair"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="car_repair" id="menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="material request" id="material_request" parent="menu_root"/><!--it was menu 1-->
+    <!--<menuitem name="Menu 2" id="car_repair.menu_2" parent="car_repair.menu_root"/>-->
+
+    <!-- actions -->
+
+    <menuitem name="car_repair_sub" id="menu_1_list" parent="material_request"
+              action="repair_action"/>
+   <!--<menuitem name="Server to list" id="car_repair" parent="car_repair.menu_2"
+              action="car_repair.action_server"/>-->
+
+  </data>
+</odoo>
