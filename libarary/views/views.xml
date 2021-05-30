@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+
+      <record id="book_action" model="ir.actions.act_window">
+          <field name="name">Books</field>
+          <field name="res_model">libarary.books</field>
+          <field name="view_mode">tree,graph,pivot,form</field>
+      </record>
+    
+
+       <record id="libarary_search" model="ir.ui.view">
+            <field name="name">libarary_search</field>
+            <field name="model">libarary.books</field>
+            <field name="arch" type="xml">
+                <search string="search_libarary">
+                    <field name="requester"/>
+                    <filter name="requester" string="Requester"/>
+                    <filter name="book" string="Book"/>
+                    <filter name="rantbook_date" string="Date"/>
+                </search>
+
+            </field>
+        </record>
+
+        
+      <menuitem id="root_menu" name="libarary"/>
+      <menuitem id="books_menu" name="Books" parent="root_menu" action="book_action"/>
+
+    
+  </data>
+</odoo>
