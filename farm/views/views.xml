@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+
+        <!-- actions -->
+        <record model="ir.actions.act_window" id="farm_action">
+            <field name="name">Farm</field>
+            <field name="res_model">farm.farm</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <!-- main_menu -->
+        <menuitem name="Farm"
+                  action="farm_action"
+                  id="farm_main_menu"
+                  sequence="1"/>
+
+        <!-- search -->
+        <record id="farm_search" model="ir.ui.view">
+            <field name="name">farm_search</field>
+            <field name="model">farm.farm</field>
+            <field name="arch" type="xml">
+                <search string="search_farm">
+                    <field name="Requester"/>
+                    <filter name="Requester" string="Requester"/>
+                    <filter name="material_name" string="Material"/>
+                    <filter name="request_date" string="Date"/>
+                </search>
+
+            </field>
+        </record>
+
+
+        <!--form Tree view-->
+        <record id="farm_view" model="ir.ui.view">
+            <field name="name">farm.form</field>
+            <field name="model">farm.farm</field>
+            <field name="arch" type="xml">
+                <form string="Re-Sequence">
+                    <group>
+                        <group>
+                            <field name="Requester"/>
+                            <field name="material_name"/>
+                            <field name="project"/>
+                        </group>
+                        <group>
+                            <field name="request_date"/>
+                            <field name="suggested_supplier"/>
+                            <field name="necessary_level"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- list view -->
+        <record model="ir.ui.view" id="farm_list">
+            <field name="name">farm_list</field>
+            <field name="model">farm.farm</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="Requester"/>
+                    <field name="material_name"/>
+                    <field name="project"/>
+                    <field name="request_date"/>
+                    <field name="suggested_supplier"/>
+                    <field name="necessary_level"/>
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
