@@ -7,9 +7,10 @@
       <field name="model">university.submission</field>
       <field name="arch" type="xml">
         <tree>
-            
-          <field name="parent_name"/>
-          <field name="student_name"/>
+
+            <field name="sequence"/>
+            <field name="parent_name"/>
+            <field name="student_name"/>
           <field name="description"/>
           <field name ="request_Date"/>
           <field name ="level"/>
@@ -25,7 +26,15 @@
       <field name="arch" type="xml">
         <form>
         <sheet>
+
+            <div class="oe_title">
+                <h1>
+                <field name="sequence"></field>
+                </h1>
+            </div>
+
             <group>
+
               <field name="parent_name" > parent </field>
             <field name="student_name" > student"</field>
           <field name="description">description</field>
