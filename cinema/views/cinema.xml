@@ -7,8 +7,9 @@
             <field name="model">cinema.cinema</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
-                    <field name="set_no"/>
+                    <field name="show_hall"/>
+                    <field name="nums_sets"/>
+                    <field name="halls_supervisor"/>
                 </tree>
             </field>
         </record>
@@ -20,12 +21,15 @@
                 <form>
                     <sheet>
                         <group>
-                            <field name="name" help="Cinema Name"/>
-                            <field name="set_no"/>
+                            <field name="show_hall" help="Hall Name"/>
+                            <field name="nums_sets"/>
+                            <field name="halls_supervisor"/>
                         </group>
                         <group>
                             <group>
-                                <field name="description"/>
+                                <field name="reserved_seat_no"/>
+                                <field name="movie_duration"/>
+                                <field name="tickets_sold"/>
                             </group>
                         </group>
                     </sheet>
@@ -39,10 +43,17 @@
             <field name="model">cinema.cinema</field>
             <field name="arch" type="xml">
                 <search>
-                    <field name="name"/>
-                    <field name="set_no"/>
-                    <filter name="cinema_name" string="Cinema Name"
-                            domain="[('name','=','Afraa')]"/>
+                    <field name="show_hall"/>
+                    <field name="halls_supervisor"/>
+                    <separator/>
+                    <filter string="Show Hall" name="show hall" domain="[('show_hall','=','Affra')]"/>
+                    <filter string="Hall Supervisor" name="hall supervisor"
+                            domain="[('halls_supervisor','!=','Hassan')]"/>
+                    <group expand="1" string="Group by">
+                        <filter string="Supervisor" name="group by supervisor"
+                                context="{'group_by': 'halls_supervisor'}"/>
+                    </group>
+                    <filter string="Show Hall" name="show hall" context="{'group_by': 'show_hall'}"/>
                 </search>
             </field>
         </record>

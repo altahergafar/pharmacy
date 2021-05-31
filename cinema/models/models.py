@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 
 
-from odoo import models, fields
+from odoo import models, fields, api
+from isodate.isostrf import DATE_BAS_WEEK, DATE_BAS_WEEK_COMPLETE
+from datetime import datetime
 
 
 class Cinema(models.Model):
     _name = 'cinema.cinema'
     _description = 'An Erp System for Cinema'
 
-    name = fields.Char('Name', required=True)
-    set_no = fields.Integer('Sets')
-    description = fields.Text('Description')
+    show_hall = fields.Char('Show Hall', required=True, copy=True)
+    nums_sets = fields.Integer('Number of Sets')
+    reserved_seat_no = fields.Integer('Reserved Seats Number')
+    halls_supervisor = fields.Char('Supervisor')
+    movie_duration = fields.Float('Movie Duration')
+    tickets_sold = fields.Boolean('Tickets are Sold out')
 
 
 class Film(models.Model):
@@ -18,6 +23,4 @@ class Film(models.Model):
     _description = 'Film and Display Information'
 
     f_name = fields.Char('Film Name', required=True, copy=True)
-    type = fields.Selection([('A', 'Action'), ('An', 'Anime'), ('c', 'Comedy')])
-    date = fields.Date('Film Time')
-    info = fields.Text('More Info')
+    movie_date = fields.Date('Movie Date')
