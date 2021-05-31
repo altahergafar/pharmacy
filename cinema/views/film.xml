@@ -9,8 +9,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="f_name" string="Name"/>
-                    <field name="type" string="Category"/>
-                    <field name="date"/>
+                    <field name="movie_date"/>
                 </tree>
             </field>
         </record>
@@ -22,16 +21,8 @@
                 <form>
                     <sheet>
                         <group>
-                            <group>
-                                <field name="f_name"/>
-                                <field name="type"/>
-                            </group>
-                        </group>
-                        <group>
-                            <group>
-                                <field name="date"/>
-                                <field name="info"/>
-                            </group>
+                            <field name="f_name"/>
+                            <field name="movie_date"/>
                         </group>
                     </sheet>
                 </form>
@@ -44,9 +35,10 @@
             <field name="arch" type="xml">
                 <search>
                     <field name="f_name"/>
-                    <field name="type"/>
-                    <filter name="film_type" string="Film Type"
-                            domain="[('type','=','A')]"/>
+                    <field name="movie_date"/>
+                     <separator/>
+                    <filter name="date_filter" string="Movie Date" date="movie_date"/>
+                     <separator/>
                 </search>
             </field>
         </record>
