@@ -1,0 +1,146 @@
+<odoo>
+  <data>
+  
+  
+  
+  <record id="view_ticket_form" model="ir.ui.view">
+            <field name="name">ticket.form</field>
+            <field name="model">ticket.ticket</field>
+            <field name="arch" type="xml">
+                <form string="Ticket">
+                   <sheet>
+                          <group col="4">
+                             <field name="name"/>
+                             <field name="email"/>
+                             <field name="phone"/>
+                             <field name="subject"/>
+                             <field name="date"/>
+                             <field name="status"/>
+                         </group>
+                         <notebook>
+                            <page string="Details">  
+                            <group> 
+                                 <field name="Description"/>
+                             </group>
+                             </page>
+                      </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+        
+        
+        
+        <record id="view_ticket_trees" model="ir.ui.view">
+            <field name="name">ticket.list</field>
+            <field name="model">ticket.ticket</field>
+            <field name="arch" type="xml">
+                <tree string="Ticket">
+                        <field name="name"/>
+                         <field name="email"/>
+                         <field name="phone"/>
+                         <field name="subject"/>
+                         <field name="status"/>
+                </tree>
+            </field>
+        </record>
+        
+        
+       <!--  
+        <record id="view_ticket_search" model="ir.ui.view">
+            <field name="name">ticket.search</field>
+            <field name="model">ticket.ticket</field>
+            <field name="arch" type="xml">
+            <search string="Ticket">
+                
+                    <field name="name"/>
+                    <field name="subject"/>
+                    <field name="status"/>
+                        <filter string="Requester"  domain="[('name','=','name')]"/>
+                        <filter string="Phone"  domain="[('phone','=','phone')]"/>                    
+                        <filter string="Request Date"  domain="[('date','=','date')]"/>
+                        <filter string="Subject"  domain="[('subject','=','subject')]"/>
+                        <filter string="status"  domain="[('status','in',['draft','in-progress','close'])]"/>
+
+                </search>
+            </field>
+        </record>
+         -->
+        
+        
+        
+     <record id="ticket_action" model="ir.actions.act_window">
+        <field name="name">Ticket</field>
+        <field name="res_model">ticket.ticket</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+<menuitem id="menu_ticket_root" name="Call Center"/>
+ 
+<menuitem id="menu_subticket_" name="Call Center" parent="menu_ticket_root" action="ticket_action"/>
+
+  
+  
+  
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="call_center.list">
+      <field name="name">call_center list</field>
+      <field name="model">call_center.call_center</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="call_center.action_window">
+      <field name="name">call_center window</field>
+      <field name="res_model">call_center.call_center</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="call_center.action_server">
+      <field name="name">call_center server</field>
+      <field name="model_id" ref="model_call_center_call_center"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="call_center" id="call_center.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="call_center.menu_1" parent="call_center.menu_root"/>
+    <menuitem name="Menu 2" id="call_center.menu_2" parent="call_center.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="call_center.menu_1_list" parent="call_center.menu_1"
+              action="call_center.action_window"/>
+    <menuitem name="Server to list" id="call_center" parent="call_center.menu_2"
+              action="call_center.action_server"/>
+-->
+  </data>
+</odoo>
