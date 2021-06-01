@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <record model="ir.ui.view" id="hospital_list">
+            <field name="name">Hospital List</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="d_name"/>
+                    <field name="appointment_num"/>
+                    <field name="note"/>
+                </tree>
+            </field>
+        </record>
+        <!--form view of hospital-->
+        <record model="ir.ui.view" id="hospital_form">
+            <field name="name">Hospital form view</field>
+            <field name="model">hospital.hospital</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="d_name"/>
+                                <field name="appointment_num"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="note"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--actions opening views on hospital-->
+
+        <record model="ir.actions.act_window" id="hospital_action_window">
+            <field name="name">
+                Hospital
+            </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hospital.hospital</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    create a new patient
+                </p>
+            </field>
+        </record>
+
+        <menuitem name="Hospital" id="hospital_main_menu"
+                  sequence="6"
+        />
+        <menuitem name="Hospital2" id="hospital2_sub_menu"
+                  sequence="7" action="hospital_action_window"
+        />
+    </data>
+</odoo>
