@@ -22,7 +22,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/cinema.xml',
-        'views/film.xml',
+        'views/movie.xml',
+        'data/sequence.xml',
         'views/templates.xml',
     ],
     # only loaded in demonstration mode

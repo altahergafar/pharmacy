@@ -4,7 +4,7 @@
 
         <record model="ir.ui.view" id="cinema_list">
             <field name="name">Cinema List</field>
-            <field name="model">cinema.cinema</field>
+            <field name="model">cinema.show</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="show_hall"/>
@@ -16,22 +16,23 @@
         <!--form view -->
         <record model="ir.ui.view" id="cinema_form">
             <field name="name">Cinema Form</field>
-            <field name="model">cinema.cinema</field>
+            <field name="model">cinema.show</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
                         <group>
-                            <field name="show_hall" help="Hall Name"/>
-                            <field name="nums_sets"/>
-                            <field name="halls_supervisor"/>
+                            <group>
+                                <field name="show_hall" help="Hall Name"/>
+                                <field name="halls_supervisor"/>
+                            </group>
                         </group>
                         <group>
                             <group>
+                                <field name="nums_sets"/>
                                 <field name="reserved_seat_no"/>
-                                <field name="movie_duration"/>
-                                <field name="tickets_sold"/>
                             </group>
                         </group>
+
                     </sheet>
 
                 </form>
@@ -40,7 +41,7 @@
         <!--Cinema Search view -->
         <record model="ir.ui.view" id="cinema_search_view">
             <field name="name">Cinema Search</field>
-            <field name="model">cinema.cinema</field>
+            <field name="model">cinema.show</field>
             <field name="arch" type="xml">
                 <search>
                     <field name="show_hall"/>
@@ -63,7 +64,7 @@
         <record model="ir.actions.act_window" id="cinema_action_window">
             <field name="name">Cinema</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">cinema.cinema</field>
+            <field name="res_model">cinema.show</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
